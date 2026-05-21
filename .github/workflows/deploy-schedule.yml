@@ -29,21 +29,20 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: 安装依赖（如果需要）
+      - name: 安装依赖
         run: |
           pip install requests
 
       - name: 运行脚本获取上下班时间并生成 index.html
-        env:
-          # 如果有需要 API 密钥，请在此添加，并在 GitHub Secrets 中配置
-          # API_KEY: ${{ secrets.API_KEY }}
-          pass
         run: python fetch_schedule.py
+        # 如果有 API 密钥，可以取消下面的注释并在 GitHub Secrets 中配置
+        # env:
+        #   API_KEY: ${{ secrets.API_KEY }}
 
       - name: 上传静态文件作为 Pages 制品
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public   # 脚本生成的目录
+          path: ./public
 
       - name: 部署到 GitHub Pages
         id: deployment
