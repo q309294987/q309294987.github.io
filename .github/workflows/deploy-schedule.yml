@@ -32,6 +32,7 @@ jobs:
 
       - name: 运行脚本获取上下班时间并生成 index.html
         env:
+          REAL_API_URL: ${{ secrets.REAL_API_URL }}
           ISSCLOCK_CLIENT_TOKEN: ${{ secrets.ISSCLOCK_CLIENT_TOKEN }}
           COOKIE: ${{ secrets.COOKIE }}
         run: python fetch_schedule.py
