@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今日上下班时间</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #1e293b;
+            text-align: center;
+            min-height: 100vh;
+        }
+        .card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.2);
+            margin-top: 5vh;
+        }
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+        .subtitle {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+        .time-block {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        .time-item {
+            background: #f1f5f9;
+            border-radius: 24px;
+            padding: 1.2rem 1.8rem;
+            min-width: 160px;
+            transition: transform 0.2s;
+        }
+        .time-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #475569;
+            margin-bottom: 0.5rem;
+        }
+        .time {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .update-info {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1rem;
+        }
+        .warning {
+            background: #fef2f2;
+            border-left: 3px solid #ef4444;
+            padding: 0.5rem;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #991b1b;
+        }
+        footer {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🏢 今日工作时间</h1>
+        <div class="subtitle">打卡记录</div>
+        
+        
+        
+        <div class="time-block">
+            <div class="time-item" style="opacity: 0.6; background: #fef2f2;">
+                <div class="label">⏰ 上班时间</div>
+                <div class="time">
+                    未打卡
+                    <span style="font-size: 0.75rem; color: #ef4444; margin-left: 8px;">⚠️ 未打卡</span>
+                </div>
+            </div>
+            <div class="time-item" style="opacity: 0.6; background: #fef2f2;">
+                <div class="label">🏠 下班时间</div>
+                <div class="time">
+                    未打卡
+                    <span style="font-size: 0.75rem; color: #ef4444; margin-left: 8px;">⚠️ 未打卡</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="warning">⚠️ 提示：今日打卡记录不完整，请及时打卡！</div>
+        
+        <div class="update-info">
+            📅 数据更新时间：2026年05月23日 13:32:43<br>
+            ⏰ 每日自动刷新（北京时间 8:58，工作日）<br>
+            📊 状态：⚠️ 打卡记录不完整
+        </div>
+    </div>
+    <footer>
+        Powered by 云函数 & GitHub Pages
+    </footer>
+</body>
+</html>
