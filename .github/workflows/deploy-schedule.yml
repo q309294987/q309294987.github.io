@@ -2,8 +2,6 @@
 name: 更新上下班时间并部署到GitHub Pages
 
 on:
-  schedule:
-    - cron: '58 0 * * *'
   workflow_dispatch:
 
 permissions:
