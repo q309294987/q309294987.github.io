@@ -5,16 +5,17 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
@@ -35,11 +36,18 @@ jobs:
           COOKIE: ${{ secrets.COOKIE }}
         run: python fetch_schedule.py
 
-      - name: 上传静态文件作为 Pages 制品
+      - name: 上传 Pages 制品
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: 部署到 GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
